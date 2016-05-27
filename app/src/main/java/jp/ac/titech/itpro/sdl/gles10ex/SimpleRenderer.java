@@ -2,11 +2,13 @@ package jp.ac.titech.itpro.sdl.gles10ex;
 
 import android.opengl.GLSurfaceView;
 import android.opengl.GLU;
+import android.util.Log;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 public class SimpleRenderer implements GLSurfaceView.Renderer {
+    private final static String TAG = "SimpleRenderer";
 
     public interface Drawable {
         void draw(GL10 gl);
@@ -22,6 +24,7 @@ public class SimpleRenderer implements GLSurfaceView.Renderer {
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+        Log.d(TAG, "onSurfaceCreated");
         gl.glEnable(GL10.GL_DEPTH_TEST);
         gl.glDepthFunc(GL10.GL_LEQUAL);
         gl.glEnable(GL10.GL_LIGHTING);
@@ -30,6 +33,7 @@ public class SimpleRenderer implements GLSurfaceView.Renderer {
 
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
+        Log.d(TAG, "onSurfaceChanged");
         gl.glViewport(0, 0, width, height);
         gl.glMatrixMode(GL10.GL_PROJECTION);
         gl.glLoadIdentity();
@@ -39,7 +43,9 @@ public class SimpleRenderer implements GLSurfaceView.Renderer {
 
     @Override
     public void onDrawFrame(GL10 gl) {
+        gl.glClearColor(0.1f, 0.1f, 0.1f, 0.0f);
         gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
+
         gl.glMatrixMode(GL10.GL_MODELVIEW);
         gl.glLoadIdentity();
         gl.glTranslatef(0, 0.2f, -3);
