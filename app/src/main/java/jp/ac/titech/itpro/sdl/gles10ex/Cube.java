@@ -6,48 +6,51 @@ import java.nio.FloatBuffer;
 
 import javax.microedition.khronos.opengles.GL10;
 
-public class Cube implements SimpleRenderer.Drawable {
-
-    private static final float[] vertices = {
-            // left
-            -0.5f, -0.5f, -0.5f,
-            -0.5f, -0.5f, 0.5f,
-            -0.5f, 0.5f, -0.5f,
-            -0.5f, 0.5f, 0.5f,
-            // right
-            0.5f, -0.5f, -0.5f,
-            0.5f, -0.5f, 0.5f,
-            0.5f, 0.5f, -0.5f,
-            0.5f, 0.5f, 0.5f,
-            // bottom
-            -0.5f, -0.5f, -0.5f,
-            0.5f, -0.5f, -0.5f,
-            -0.5f, -0.5f, 0.5f,
-            0.5f, -0.5f, 0.5f,
-            // top
-            -0.5f, 0.5f, -0.5f,
-            0.5f, 0.5f, -0.5f,
-            -0.5f, 0.5f, 0.5f,
-            0.5f, 0.5f, 0.5f,
-            // back
-            -0.5f, -0.5f, -0.5f,
-            -0.5f, 0.5f, -0.5f,
-            0.5f, -0.5f, -0.5f,
-            0.5f, 0.5f, -0.5f,
-            // front
-            -0.5f, -0.5f, 0.5f,
-            -0.5f, 0.5f, 0.5f,
-            0.5f, -0.5f, 0.5f,
-            0.5f, 0.5f, 0.5f,
-    };
+public class Cube implements SimpleRenderer.Obj {
 
     private FloatBuffer vbuf;
+    private float x, y, z;
 
-    public Cube() {
+    public Cube(float s, float x, float y, float z) {
+        float[] vertices = {
+                // left
+                -s, -s, -s,
+                -s, -s, s,
+                -s, s, -s,
+                -s, s, s,
+                // right
+                s, -s, -s,
+                s, -s, s,
+                s, s, -s,
+                s, s, s,
+                // bottom
+                -s, -s, -s,
+                s, -s, -s,
+                -s, -s, s,
+                s, -s, s,
+                // top
+                -s, s, -s,
+                s, s, -s,
+                -s, s, s,
+                s, s, s,
+                // back
+                -s, -s, -s,
+                -s, s, -s,
+                s, -s, -s,
+                s, s, -s,
+                // front
+                -s, -s, s,
+                -s, s, s,
+                s, -s, s,
+                s, s, s
+        };
         vbuf = ByteBuffer.allocateDirect(vertices.length * 4)
                 .order(ByteOrder.nativeOrder()).asFloatBuffer();
         vbuf.put(vertices);
         vbuf.position(0);
+        this.x = x;
+        this.y = y;
+        this.z = z;
     }
 
     public void draw(GL10 gl) {
@@ -77,5 +80,19 @@ public class Cube implements SimpleRenderer.Drawable {
         // front
         gl.glNormal3f(0, 0, 1);
         gl.glDrawArrays(GL10.GL_TRIANGLE_STRIP, 20, 4);
+    }
+    @Override
+    public float getX() {
+        return x;
+    }
+
+    @Override
+    public float getY() {
+        return y;
+    }
+
+    @Override
+    public float getZ() {
+        return z;
     }
 }

@@ -20,14 +20,18 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
         Log.d(TAG, "onCreate");
         setContentView(R.layout.activity_main);
         glView = (GLSurfaceView) findViewById(R.id.glview);
-        renderer = new SimpleRenderer(new Pyramid(), new Cube());
-        glView.setRenderer(renderer);
+
         rotationBarX = (SeekBar) findViewById(R.id.rotation_bar_x);
         rotationBarY = (SeekBar) findViewById(R.id.rotation_bar_y);
         rotationBarZ = (SeekBar) findViewById(R.id.rotation_bar_z);
         rotationBarX.setOnSeekBarChangeListener(this);
         rotationBarY.setOnSeekBarChangeListener(this);
         rotationBarZ.setOnSeekBarChangeListener(this);
+
+        renderer = new SimpleRenderer();
+        renderer.addObj(new Cube(0.5f, 0, 0.2f, -3));
+        renderer.addObj(new Pyramid(0.5f, 0, 0, 0));
+        glView.setRenderer(renderer);
     }
 
     @Override
