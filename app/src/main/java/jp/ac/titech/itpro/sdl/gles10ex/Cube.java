@@ -8,7 +8,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class Cube implements SimpleRenderer.Drawable {
 
-    private final float[] vertices = {
+    private static final float[] vertices = {
             // left
             -0.5f, -0.5f, -0.5f,
             -0.5f, -0.5f, 0.5f,

@@ -1,13 +1,13 @@
 package jp.ac.titech.itpro.sdl.gles10ex;
 
-import android.app.Activity;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.SeekBar;
 
 
-public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeListener {
+public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener {
     private final static String TAG = "MainActivity";
 
     private GLSurfaceView glView;
@@ -17,14 +17,14 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.i(TAG, "onCreate");
+        Log.d(TAG, "onCreate");
         setContentView(R.layout.activity_main);
         glView = (GLSurfaceView) findViewById(R.id.glview);
         renderer = new SimpleRenderer(new Pyramid(), new Cube());
         glView.setRenderer(renderer);
-        rotationBarX = (SeekBar)findViewById(R.id.rotation_bar_x);
-        rotationBarY = (SeekBar)findViewById(R.id.rotation_bar_y);
-        rotationBarZ = (SeekBar)findViewById(R.id.rotation_bar_z);
+        rotationBarX = (SeekBar) findViewById(R.id.rotation_bar_x);
+        rotationBarY = (SeekBar) findViewById(R.id.rotation_bar_y);
+        rotationBarZ = (SeekBar) findViewById(R.id.rotation_bar_z);
         rotationBarX.setOnSeekBarChangeListener(this);
         rotationBarY.setOnSeekBarChangeListener(this);
         rotationBarZ.setOnSeekBarChangeListener(this);
@@ -33,14 +33,14 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
     @Override
     protected void onResume() {
         super.onResume();
-        Log.i(TAG, "onResume");
+        Log.d(TAG, "onResume");
         glView.onResume();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.i(TAG, "onPause");
+        Log.d(TAG, "onPause");
         glView.onPause();
     }
 
@@ -55,9 +55,11 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
     }
 
     @Override
-    public void onStartTrackingTouch(SeekBar seekBar) {}
+    public void onStartTrackingTouch(SeekBar seekBar) {
+    }
 
     @Override
-    public void onStopTrackingTouch(SeekBar seekBar) {}
+    public void onStopTrackingTouch(SeekBar seekBar) {
+    }
 
 }

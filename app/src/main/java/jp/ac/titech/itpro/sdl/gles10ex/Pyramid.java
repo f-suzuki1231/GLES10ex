@@ -7,6 +7,7 @@ import java.nio.FloatBuffer;
 import javax.microedition.khronos.opengles.GL10;
 
 public class Pyramid implements SimpleRenderer.Drawable {
+
     private static final float[] vertices = {
             // bottom
             -0.5f, 0, -0.5f,

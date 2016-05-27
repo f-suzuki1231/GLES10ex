@@ -18,19 +18,19 @@
     <SeekBar
         android:id="@+id/rotation_bar_x"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/seek_bar_width"
         android:max="360"/>
 
     <SeekBar
         android:id="@+id/rotation_bar_y"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/seek_bar_width"
         android:max="360"/>
 
     <SeekBar
         android:id="@+id/rotation_bar_z"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/seek_bar_width"
         android:max="360"/>
 
 </LinearLayout>

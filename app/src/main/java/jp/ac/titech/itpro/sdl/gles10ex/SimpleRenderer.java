@@ -9,7 +9,7 @@ import javax.microedition.khronos.opengles.GL10;
 public class SimpleRenderer implements GLSurfaceView.Renderer {
 
     public interface Drawable {
-        public void draw(GL10 gl);
+        void draw(GL10 gl);
     }
 
     private Drawable obj1, obj2;
@@ -51,7 +51,7 @@ public class SimpleRenderer implements GLSurfaceView.Renderer {
 
         gl.glMatrixMode(GL10.GL_MODELVIEW);
         gl.glLoadIdentity();
-        gl.glTranslatef(0, -0.2f , 0);
+        gl.glTranslatef(0, -0.2f, 0);
         gl.glRotatef(rx, 1, 0, 0);
         gl.glRotatef(ry, 0, 1, 0);
         gl.glRotatef(rz, 0, 0, 1);
