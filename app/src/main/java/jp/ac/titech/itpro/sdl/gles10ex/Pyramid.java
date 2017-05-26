@@ -8,7 +8,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class Pyramid implements SimpleRenderer.Obj {
 
-    private FloatBuffer vbuf;
+   private FloatBuffer vbuf;
     private float x, y, z;
 
     public Pyramid(float s, float x, float y, float z) {
